@@ -1,28 +1,45 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+  <v-app id="keep">
+    <v-app-bar
+            app
+            clipped-left
+            color="amber"
+    >
+      <v-app-bar-nav-icon @click="drawer = !drawer" />
+      <span class="title ml-3 mr-5">Аренда&nbsp;<span class="font-weight-light">залов</span></span>
+
+      <v-spacer />
+    </v-app-bar>
+
+    <navigation :drawer="drawer" />
+
+    <v-content>
+      <v-container
+              fluid
+              class="grey lighten-4 fill-height"
+      >
+        <router-view></router-view>
+      </v-container>
+    </v-content>
+  </v-app>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+  import Navigation from "./components/Navigation";
 
-export default {
-  name: 'App',
-  components: {
-    HelloWorld
+  export default {
+    components: {
+      Navigation
+    },
+    props: {
+    },
+    data: () => ({
+      drawer: true,
+    }),
+
   }
-}
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+
 </style>
